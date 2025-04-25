@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOLY HYPE MOVEMENT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fundo: '#0D0D0D',
+                        branco: '#F5E9D3',
+                        amarelo: '#D2993D',
+                        cinza: '#D6D6D6',
+                        marrom: '#3B2F26',
+                        rosa: '#4A1F23',
+                        ferrugem: '#A14F2A',
+                    },
+                    fontFamily: {
+                      anton: ['Anton', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'scale-in': 'scaleIn 0.7s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'logo-glow': 'logoGlow 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { textShadow: '0 0 4px rgb(210 153 61 / 0.5)' },
+                            '100%': { textShadow: '0 0 8px rgb(210 153 61 / 0.8)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        logoGlow: {
+                            '0%': { 
+                                'box-shadow': '0 0 5px rgba(210, 153, 61, 0.3)',
+                                transform: 'scale(1)'
+                            },
+                            '50%': { 
+                                'box-shadow': '0 0 10px rgba(210, 153, 61, 0.6)',
+                                transform: 'scale(1.02)'
+                            },
+                            '100%': { 
+                                'box-shadow': '0 0 5px rgba(210, 153, 61, 0.3)',
+                                transform: 'scale(1)'
+                            }
+                        },
+                    },
+                },
+            }
+        }
+    </script>
+</head>
+<body class="bg-fundo font-anton">
+
+<nav class="fixed top-0 right-0 w-full bg-fundo/80 backdrop-blur-sm z-50">
+    <div class="flex justify-between items-center h-20 px-6 md:px-10">
+        <div class="flex-1"></div>
+
+        <button id="menu-btn" class="md:hidden text-branco transition-colors z-50 hover:text-amarelo">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <ul id="menu" class="menu fixed md:relative top-0 -right-full md:right-0 h-screen md:h-auto w-64 md:w-auto bg-ferrugem md:bg-transparent flex flex-col md:flex-row gap-8 text-branco text-xl p-8 md:p-0 transition-all duration-300 z-40">
+            <button id="close-menu" class="md:hidden text-right text-2xl mb-8 absolute top-4 right-4">&times;</button>
+            <div class="mt-16 md:mt-0 flex flex-col md:flex-row gap-8">
+                <a href="#" class="transition-all duration-300 relative group">
+                    <li>SOBRE NÓS</li>
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="transition-all duration-300 relative group">
+                    <li>PROJETOS</li>
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="#" class="transition-all duration-300 relative group">
+                    <li>EVENTOS</li>
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<header class="pt-20">
+    <div class="flex mt-11 justify-center items-center">
+        <h1 class="text-branco text-7xl font-semibold tracking-wide animate-fade-in animate-slide-up">HOLY HYPE</h1>
+    </div>
+    <div class="flex justify-center items-center mt-5 mb-5 relative">
+        <div class="absolute w-64 h-64 bg-amarelo/10 rounded-full blur-xl animate-logo-glow"></div>
+        <img 
+            src="/img/logo-topo.png" 
+            alt="Logo" 
+            class="w-60 h-60 animate-fade-in animate-slide-up relative hover:scale-105 transition-all duration-500"
+        >
+    </div>
+    <div class="flex justify-center items-center mt-2 ">
+        <p class="paragrafo-header text-marrom text-3xl tracking-tight animate-fade-in animate-slide-up text-center">JOVENS BUSCANDO A SANTIDADE</p>
+    </div>
+    <div class="header-image-container relative overflow-hidden mt-10">
+        <img 
+            src="img/header.jpg" 
+            alt="Imagem da banda Holy Hype" 
+            class="w-full object-cover h-[300px] animate-fade-in animate-slide-up hover:scale-105 transition-transform duration-700 ease-in-out"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-fundo to-transparent opacity-80"></div>
+    </div>
+</header>
+
+<section class="px-6 md:px-20 py-16">
+    <div class="flex flex-col items-center max-w-4xl mx-auto">
+        <h2 class="text-branco text-5xl font-semibold tracking-wide animate-fade-in animate-slide-up animate-glow mb-12 relative hover:scale-105 transition-all duration-300">
+            Sobre nós
+            <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amarelo animate-pulse"></span>
+        </h2>
+        
+        <div class="space-y-8 text-center">
+            <p class="text-cinza text-xl leading-relaxed animate-fade-in animate-slide-up animate-scale-in">
+                O Movimento Holy Hype é um movimento que nasceu para inspirar uma geração a viver com propósito e santidade, sempre com Deus no centro de tudo.
+            </p>
+            <div class="relative py-8">
+                <p class="text-amarelo text-lg italic mb-4 animate-fade-in animate-slide-up animate-slide-left">
+                    Nos baseamos em Colossenses 3:23:
+                </p>
+                <blockquote class="text-branco text-2xl font-light animate-fade-in animate-slide-up animate-slide-right relative px-8 hover:scale-105 transition-all duration-500">
+                    "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens."
+                    <span class="absolute left-0 top-0 h-full w-1 bg-amarelo animate-pulse"></span>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="px-6 md:px-20 py-16">
+    <div class="flex flex-col items-center max-w-4xl mx-auto">
+        <h3 class="text-branco text-5xl font-semibold tracking-wide animate-fade-in animate-slide-up animate-glow mb-12 relative hover:scale-105 transition-all duration-300">
+            Projetos
+            <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amarelo animate-pulse"></span>
+        </h3>
+        <div class="flex flex-wrap justify-center gap-8">
+            <div class="max-w-sm bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                <a href="#" class="block overflow-hidden rounded-t-lg h-[350px]">
+                    <img 
+                        class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                        src="/img/holy-hype-night.png" 
+                        alt="Holy Hype Night Event" 
+                    />
+                </a>
+                <div class="p-6">
+                    <a href="#" class="block mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                        <h5 class="text-2xl font-bold tracking-tight text-amarelo">Holy Hype Night</h5>
+                    </a>
+                    <p class="mb-6 text-branco/80">
+                        Uma noite de adoração e comunhão, onde jovens se reúnem para experienciar a presença de Deus através da música e da palavra.
+                    </p>
+                    <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-branco border border-amarelo rounded-lg bg-amarelo/10 hover:bg-amarelo/20 transition-all duration-300 group/button">
+                        Saiba mais
+                        <svg 
+                            class="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/button:translate-x-1" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center mt-8 gap-8">
+            <div class="max-w-sm bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                <a href="#" class="block overflow-hidden rounded-t-lg h-[350px]">
+                    <img 
+                        class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                        src="/img/holy-point.png" 
+                        alt="Anúncio do Holy Point" 
+                    />
+                </a>
+                <div class="p-6">
+                    <a href="#" class="block mb-4 group-hover:translate-x-2 transition-transform duration-300">
+                        <h5 class="text-2xl font-bold tracking-tight text-amarelo">Holy Point</h5>
+                    </a>
+                    <p class="mb-6 text-branco/80">
+                        O HOLY POINT é um movimento criado para levar a palavra de Deus aos jovens dentro das faculdades! Aqui, nos reunimos semanalmente para orar, compartilhar testemunhos, estudar a Bíblia e crescer juntos na fé!
+                    </p>
+                    <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-branco border border-amarelo rounded-lg bg-amarelo/10 hover:bg-amarelo/20 transition-all duration-300 group/button">
+                        Saiba mais
+                        <svg 
+                            class="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/button:translate-x-1" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</section>
+  <script src="/js/menu.js"></script>
+   
+</body>
+</html>
