@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.add('-right-full');
         isMenuOpen = false;
     });
-
-    // Fechar menu ao clicar em um link
+    
     const menuLinks = menu.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
