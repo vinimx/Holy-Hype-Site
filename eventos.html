@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fundo: '#0D0D0D',
+                        branco: '#F5E9D3',
+                        amarelo: '#D2993D',
+                        cinza: '#D6D6D6',
+                        marrom: '#3B2F26',
+                        rosa: '#4A1F23',
+                        ferrugem: '#A14F2A',
+                    },
+                    fontFamily: {
+                      anton: ['Anton', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'scale-in': 'scaleIn 0.7s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'logo-glow': 'logoGlow 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shine': 'shine 1.5s ease-in-out infinite',
+                        'card-hover': 'cardHover 0.5s ease-out forwards',
+                        'border-glow': 'borderGlow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { textShadow: '0 0 4px rgb(210 153 61 / 0.5)' },
+                            '100%': { textShadow: '0 0 8px rgb(210 153 61 / 0.8)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        logoGlow: {
+                            '0%': { 'box-shadow': '0 0 5px rgba(210, 153, 61, 0.3)',
+                                transform: 'scale(1)'
+                            },
+                            '50%': { 
+                                'box-shadow': '0 0 10px rgba(210, 153, 61, 0.6)',
+                                transform: 'scale(1.02)'
+                            },
+                            '100%': { 
+                                'box-shadow': '0 0 5px rgba(210, 153, 61, 0.3)',
+                                transform: 'scale(1)'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' }
+                        },
+                        cardHover: {
+                            '0%': { transform: 'translateY(0) scale(1)' },
+                            '100%': { transform: 'translateY(-5px) scale(1.02)' }
+                        },
+                        borderGlow: {
+                            '0%, 100%': { 
+                                boxShadow: '0 0 5px rgba(210, 153, 61, 0.3)',
+                                borderColor: 'rgba(210, 153, 61, 0.3)'
+                            },
+                            '50%': { 
+                                boxShadow: '0 0 20px rgba(210, 153, 61, 0.6)',
+                                borderColor: 'rgba(210, 153, 61, 0.8)'
+                            }
+                        }
+                    },
+                },
+            }
+        }
+    </script>
+</head>
+<body class="bg-fundo font-anton">
+
+    <nav class="fixed top-0 right-0 w-full bg-fundo/80 backdrop-blur-sm z-50">
+        <div class="flex justify-between items-center h-20 px-6 md:px-10">
+            <div class="flex-1"></div>
+            <button id="menu-btn" class="md:hidden text-branco transition-colors z-50 hover:text-amarelo">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <ul id="menu" class="menu fixed md:relative top-0 -right-full md:right-0 h-screen md:h-auto w-64 md:w-auto bg-ferrugem md:bg-transparent flex flex-col md:flex-row gap-8 text-branco text-xl p-8 md:p-0 transition-all duration-300 z-40">
+                <button id="close-menu" class="md:hidden text-right text-2xl mb-8 absolute top-4 right-4">&times;</button>
+                <div class="mt-16 md:mt-0 flex flex-col md:flex-row gap-8">
+                    <a href="index.html" class="transition-all duration-300 relative group">
+                        <li>HOME</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="transition-all duration-300 relative group">
+                        <li>SOBRE NÓS</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="transition-all duration-300 relative group">
+                        <li>PROJETOS</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="transition-all duration-300 relative group">
+                        <li>EVENTOS</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="transition-all duration-300 relative group">
+                        <li>VOLUNTÁRIOS</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="transition-all duration-300 relative group">
+                        <li>CONTATO</li>
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amarelo transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="relative flex flex-col items-center justify-center h-screen text-center bg-cover bg-center before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-b before:from-fundo/50 before:to-fundo/80" style="background-image: url('/img/eventos.jpg');">
+        <div class="relative z-10 px-4">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl text-branco font-bold tracking-wider animate-fade-in mb-6 animate-glow">
+                EVENTOS
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-branco/90 animate-slide-up max-w-3xl mx-auto leading-relaxed">
+                Veja alguns eventos que estivemos recentemente!
+            </p>
+        </div>
+
+        <div class="absolute inset-x-0 bottom-8 sm:bottom-12 md:bottom-16 flex justify-center animate-bounce">
+            <a href="#nossa-historia" 
+               class="group flex flex-col items-center gap-2 transition-all duration-300 px-4">
+                <span class="text-branco/80 text-sm sm:text-base md:text-lg group-hover:text-amarelo transition-colors duration-300">
+                    Role para baixo
+                </span>
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-amarelo transform transition-all duration-500 group-hover:translate-y-1" 
+                     xmlns="http://www.w3.org/2000/svg" 
+                     fill="none" 
+                     viewBox="0 0 24 24" 
+                     stroke="currentColor">
+                    <path stroke-linecap="round" 
+                          stroke-linejoin="round" 
+                          stroke-width="2" 
+                          d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-fundo to-transparent"></div>
+    </header>
+
+    <main class="bg-fundo">
+        <section id="eventos" class="px-4 sm:px-6 md:px-20 py-12 md:py-16">
+            <div class="flex flex-col items-center max-w-7xl mx-auto">
+                <h2 class="text-branco text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-wide animate-fade-in animate-slide-up animate-glow mb-12 md:mb-16 relative hover:scale-105 transition-all duration-300 text-center">
+                    Eventos Recentes
+                    <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-amarelo animate-pulse"></span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
+                    <div class="lg:col-span-2 lg:row-span-2 w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[300px] sm:h-[350px] md:h-[400px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/ourinhos.jpg" 
+                                 alt="Holy Hype Música na Igreja Rio" 
+                            />
+                        </a>
+                        <div class="p-6">
+                            <h5 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-amarelo mb-4">Igreja Rio - Ourinhos/SP</h5>
+                            <p class="text-branco/80 text-base sm:text-lg leading-relaxed mb-6">
+                                Somos muito gratos pelo que Deus fez nesse fim de semana em Ourinhos/SP na @igrejario_. Homens e mulheres exaltando e adorando Aquele que merece toda HONRA E LOUVOR!
+                            </p>
+                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm sm:text-base font-medium text-branco border-2 border-amarelo rounded-lg bg-amarelo/10 hover:bg-amarelo/20 transition-all duration-300 group/button">
+                                Saiba mais
+                                <svg class="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/button:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/carnaval.png" 
+                                 alt="Carnaval Holy Hype" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Agendas de Carnaval 2025</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                ESSES DIAS FORAM INSANOS! Vivemos realmente o amor de Deus nesses dias.
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/night.png" 
+                                 alt="Holy Hype Night" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Holy Hype Night</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                HOLY HYPE CULTO 2025. O primeiro encontro será em AVARÉ!
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/holy-point.png" 
+                                 alt="Holy Point" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Holy Point</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                Reunião semanal em faculdades
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 space-y-4 md:space-y-6">
+                        <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                            <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                                <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                     src="img/carnaval.png" 
+                                     alt="Carnaval Holy Hype" 
+                                />
+                            </a>
+                            <div class="p-4">
+                                <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Carnaval 2025</h5>
+                                <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                    ESSES DIAS FORAM INSANOS!
+                                </p>
+                                <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                    Ver mais
+                                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/carnaval.png" 
+                                 alt="Carnaval Holy Hype" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Agendas de Carnaval 2025</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                ESSES DIAS FORAM INSANOS! Vivemos realmente o amor de Deus nesses dias.
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/night.png" 
+                                 alt="Holy Hype Night" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Holy Hype Night</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                HOLY HYPE CULTO 2025. O primeiro encontro será em AVARÉ!
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 lg:row-span-2 w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[300px] sm:h-[350px] md:h-[400px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/ourinhos.jpg" 
+                                 alt="Holy Hype Música na Igreja Rio" 
+                            />
+                        </a>
+                        <div class="p-6">
+                            <h5 class="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-amarelo mb-4">Igreja Rio - Ourinhos/SP</h5>
+                            <p class="text-branco/80 text-base sm:text-lg leading-relaxed mb-6">
+                                Somos muito gratos pelo que Deus fez nesse fim de semana em Ourinhos/SP na @igrejario_. Homens e mulheres exaltando e adorando Aquele que merece toda HONRA E LOUVOR!
+                            </p>
+                            <a href="#" class="inline-flex items-center px-4 py-2 text-sm sm:text-base font-medium text-branco border-2 border-amarelo rounded-lg bg-amarelo/10 hover:bg-amarelo/20 transition-all duration-300 group/button">
+                                Saiba mais
+                                <svg class="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/button:translate-x-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/holy-point.png" 
+                                 alt="Holy Point" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Holy Point</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                Reunião semanal em faculdades
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/carnaval.png" 
+                                 alt="Carnaval Holy Hype" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Agendas de Carnaval 2025</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                ESSES DIAS FORAM INSANOS! Vivemos realmente o amor de Deus nesses dias.
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-rosa/20 backdrop-blur-sm border border-amarelo/20 rounded-lg shadow-lg shadow-amarelo/10 hover:shadow-amarelo/20 transition-all duration-500 animate-fade-in animate-slide-up group">
+                        <a href="#" class="block overflow-hidden rounded-t-lg h-[200px]">
+                            <img class="rounded-t-lg transform transition-transform duration-700 group-hover:scale-105 w-full h-full object-cover" 
+                                 src="img/night.png" 
+                                 alt="Holy Hype Night" 
+                            />
+                        </a>
+                        <div class="p-4">
+                            <h5 class="text-lg sm:text-xl font-bold tracking-tight text-amarelo mb-2">Holy Hype Night</h5>
+                            <p class="text-branco/80 text-sm sm:text-base leading-relaxed mb-4">
+                                HOLY HYPE CULTO 2025. O primeiro encontro será em AVARÉ!
+                            </p>
+                            <a href="#" class="text-amarelo hover:text-branco text-sm transition-colors duration-300 flex items-center gap-2">
+                                Ver mais
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    
+    <footer class="bg-rosa/20 backdrop-blur-sm border-t border-amarelo/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 py-12 md:py-16">
+            <div class="text-center mb-12 md:mb-16">
+                <img src="/img/logo-topo.png" alt="Holy Hype Logo" class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 mx-auto mb-8 md:mb-10 hover:scale-105 transition-all duration-300">
+                <blockquote class="text-branco/80 text-lg sm:text-xl md:text-2xl italic mb-4 max-w-3xl mx-auto">
+                    "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens."
+                    <span class="text-amarelo block mt-4 text-base sm:text-lg md:text-xl">Colossenses 3:23</span>
+                </blockquote>
+            </div>
+    
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
+    
+                <div class="text-center md:text-left">
+                    <h4 class="text-amarelo text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8">Links Rápidos</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="text-branco/80 text-base sm:text-lg md:text-xl hover:text-amarelo transition-colors duration-300">
+                                Sobre Nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-branco/80 text-base sm:text-lg md:text-xl hover:text-amarelo transition-colors duration-300">
+                                Projetos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-branco/80 text-base sm:text-lg md:text-xl hover:text-amarelo transition-colors duration-300">
+                                Eventos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-branco/80 text-base sm:text-lg md:text-xl hover:text-amarelo transition-colors duration-300">
+                                Voluntários
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="text-center md:text-left">
+                    <h4 class="text-amarelo text-xl sm:text-2xl md:text-3xl font-semibold mb-6 md:mb-8">Contato</h4>
+                    <ul class="space-y-4">
+                        <li class="text-branco/80 text-base sm:text-lg md:text-xl">
+                            <span class="text-amarelo font-semibold">Email:</span> holyhype@gmail.com
+                        </li>
+                        <li class="text-branco/80 text-base sm:text-lg md:text-xl">
+                            <span class="text-amarelo font-semibold">WhatsApp:</span> (14) 99890-8870
+                        </li>
+                        <li class="text-branco/80 text-base sm:text-lg md:text-xl">
+                            <span class="text-amarelo font-semibold">Localização:</span> Avaré, SP
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="flex justify-center items-center gap-6 sm:gap-8 mb-8 sm:mb-10">
+                <a href="" 
+                   target="_blank"
+                   class="group flex flex-col items-center transition-transform hover:scale-110 duration-300">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-ferrugem/10 rounded-full flex items-center justify-center group-hover:bg-ferrugem/20 transition-all duration-300">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-ferrugem" 
+                             xmlns="http://www.w3.org/2000/svg" 
+                             fill="currentColor" 
+                             viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </div>
+                    <span class="text-ferrugem text-base sm:text-lg md:text-xl font-semibold mt-2">Instagram</span>
+                </a>
+        
+                <a href="" 
+                   target="_blank"
+                   class="group flex flex-col items-center transition-transform hover:scale-110 duration-300">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-ferrugem/10 rounded-full flex items-center justify-center group-hover:bg-ferrugem/20 transition-all duration-300">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-ferrugem" 
+                             xmlns="http://www.w3.org/2000/svg" 
+                             fill="currentColor" 
+                             viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <span class="text-ferrugem text-base sm:text-lg md:text-xl font-semibold mt-2">YouTube</span>
+                </a>
+            </div>
+    
+            <div class="border-t border-amarelo/20 pt-8">
+                <div class="text-center">
+                    <p class="text-branco/60 text-base sm:text-lg mb-3">
+                        Desenvolvido por 
+                        <a href="" 
+                           target="_blank" 
+                           class="text-amarelo hover:text-branco transition-colors duration-300 font-semibold"
+                        >
+                            Marcos Vinicius Rocha Marcolino Rocha
+                        </a>
+                    </p>
+                    <p class="text-branco/60 text-sm sm:text-base">
+                        © 2025 Holy Hype. Todos os direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/menu.js"></script>
+</body>
+</html>
