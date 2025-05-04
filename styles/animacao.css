@@ -1,3 +1,4 @@
+/* Efeito de fade ao rolar a página */
 .hide-on-scroll {
     opacity: 0;
     transform: translateY(20px);
@@ -9,6 +10,7 @@
     transform: translateY(0);
 }
 
+/* Efeito parallax para backgrounds */
 .parallax-bg {
     position: absolute;
     top: 0;
@@ -20,6 +22,7 @@
     will-change: transform;
 }
 
+/* Cursor personalizado */
 .custom-cursor {
     width: 20px;
     height: 20px;
@@ -34,6 +37,7 @@
     transform: translate(-50%, -50%);
 }
 
+/* Efeito de vidro fosco */
 .glass-effect {
     background: rgba(74, 31, 35, 0.1);
     backdrop-filter: blur(10px);
@@ -41,6 +45,7 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
+/* Animação de carregamento */
 .loader {
     position: fixed;
     top: 0;
@@ -77,6 +82,7 @@
     animation: spin 1500ms cubic-bezier(.175, .885, .32, 1.275) infinite;
 }
 
+/* Animação de rotação do loader */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

@@ -1,0 +1,11 @@
+.border-red-500 {
+    border-color: rgb(239, 68, 68) !important;
+}
+
+.focus\:border-red-500:focus {
+    border-color: rgb(239, 68, 68) !important;
+}
+
+.focus\:ring-red-500:focus {
+    --tw-ring-color: rgb(239, 68, 68) !important;
+}

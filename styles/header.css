@@ -1,3 +1,4 @@
+/* Efeito de digitação do texto principal */
 .paragrafo-header {
     -webkit-text-stroke-color: #D2993D; 
     display: flex;
@@ -9,6 +10,7 @@
     position: relative;
 }
 
+/* Animação de preenchimento do texto da esquerda para direita */
 .paragrafo-header::before {
     content: "JOVENS BUSCANDO A SANTIDADE";
     color: #D2993D;
@@ -24,6 +26,7 @@
     animation: animateX 7s linear infinite;
 }
 
+/* Cursor piscante após o texto */
 .paragrafo-header::after {
     content: "";
     position: absolute;
@@ -34,6 +37,7 @@
     animation: blink 0.6s step-end infinite;
 }
 
+/* Animações do efeito de digitação */
 @keyframes blink {
     0%, 100% { border-color: #F5E9D3; }
     50% { border-color: transparent; }
@@ -54,12 +58,14 @@
     -webkit-backdrop-filter: blur(20px);
 }
 
+/* Configuração do container da imagem de header */
 .header-image-container {
     box-shadow: 0 -10px 30px -5px rgba(92, 79, 58, 0.2);
     position: relative;
     overflow: hidden;
 }
 
+/* Efeitos de hover na imagem */
 .header-image-container img {
     filter: saturate(0.8) contrast(1.1);
     transition: all 0.7s ease;
@@ -80,6 +86,7 @@
     background: linear-gradient(to right, transparent, #4A1F23, transparent);
 }
 
+/* Gradiente sobreposto à imagem */
 .header-image-container::before {
     content: '';
     position: absolute;
@@ -92,4 +99,20 @@
 
 .header-image-container:hover::before {
     opacity: 0.6;
+}
+
+/* Animação de flutuação */
+.img-flutuante {
+    animation: flutuar 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% { 
+        transform: translateY(-10px) scale(1);
+    }
 }
