@@ -1,4 +1,4 @@
-# 🙏 Holy Hype Movement - Banner Website
+# 🙏 Holy Hype Movement
 
 ## 📝 Sobre o Projeto
 **Holy Hype Movement** é um movimento cristão jovem focado em inspirar uma geração a viver com propósito e santidade.  
