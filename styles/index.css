@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('./header.css');
 @import url('./menu.css');
 @import url('./animacao.css');
@@ -10,3 +11,17 @@ html {
 .scroll-smooth {
     cursor: pointer;
 }
+=======
+@import url('./header.css');
+@import url('./menu.css');
+@import url('./animacao.css');
+@import url('./form-contato.css');
+
+html {
+    scroll-behavior: smooth;
+}
+
+.scroll-smooth {
+    cursor: pointer;
+}
+>>>>>>> 72251ae6e9797e36dfed64a53ab4b3baf00cd72b
