@@ -1,4 +1,4 @@
-# 🙏 Holy Hype Movement - Banner Website
+# 🙏 Holy Hype Movement
 
 ## 📝 Sobre o Projeto
 
